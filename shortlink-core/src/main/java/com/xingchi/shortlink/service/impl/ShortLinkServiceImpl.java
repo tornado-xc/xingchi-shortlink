@@ -1,6 +1,7 @@
 package com.xingchi.shortlink.service.impl;
 
 import com.xingchi.shortlink.common.utils.Base62Utils;
+import com.xingchi.shortlink.config.Constants;
 import com.xingchi.shortlink.config.ShortLinkProperties;
 import com.xingchi.shortlink.dao.ShortLinkDao;
 import com.xingchi.shortlink.model.ShortLink;
@@ -52,6 +53,14 @@ public class ShortLinkServiceImpl implements ShortLinkService {
     }
 
     @Override
+    public ShortLink queryShortLink(String shortUrl) {
+
+
+
+        return null;
+    }
+
+    @Override
     public String buildShortLink(String longLink) {
 
         // 获取短链唯一码以及雪花id
@@ -67,10 +76,10 @@ public class ShortLinkServiceImpl implements ShortLinkService {
         // 构建短链
         String domain = shortLinkProperties.getDomain();
         String shortLink = domain;
-        if (domain.endsWith("/")) {
+        if (domain.endsWith(Constants.SLASH)) {
             shortLink += uniqueCode;
         } else {
-            shortLink = shortLink + "/" + uniqueCode;
+            shortLink = shortLink + Constants.SLASH + uniqueCode;
         }
 
         // 计算哈希值

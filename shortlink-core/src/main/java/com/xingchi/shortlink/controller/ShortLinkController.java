@@ -1,13 +1,13 @@
 package com.xingchi.shortlink.controller;
 
 import com.xingchi.common.unique.Result;
-import com.xingchi.shortlink.model.dto.ShortLinkBuilerDTO;
+import com.xingchi.shortlink.common.model.dto.ShortLinkBuilderDTO;
 import com.xingchi.shortlink.service.ShortLinkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -29,8 +29,8 @@ public class ShortLinkController {
     }
 
     @PostMapping("/convert")
-    public Result<String> convertLink(@RequestBody ShortLinkBuilerDTO shortLinkBuilerDTO) {
-        return Result.ok(shortLinkService.buildShortLink(shortLinkBuilerDTO.getLongLink()));
+    public Result<String> convertLink(@RequestBody @Validated ShortLinkBuilderDTO shortLinkBuilderDTO) {
+        return Result.ok(shortLinkService.buildShortLink(shortLinkBuilderDTO.getLongLink()));
     }
 
 }

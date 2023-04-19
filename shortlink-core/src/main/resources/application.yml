@@ -3,10 +3,6 @@ server:
 spring:
   application:
     name: ${SPRING.APPLICATION.NAME:shortlink-server}
-  redis:
-    host: ${REDIS.HOST:150.158.130.171}
-    port: ${REDIS.PORT:56379}
-    password: ${REDIS.PASSWORD:xy19981123..}
   cloud:
     nacos:
       discovery:

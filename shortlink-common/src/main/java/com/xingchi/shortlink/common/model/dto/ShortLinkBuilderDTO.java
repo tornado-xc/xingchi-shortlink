@@ -1,4 +1,4 @@
-package com.xingchi.shortlink.model.dto;
+package com.xingchi.shortlink.common.model.dto;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import lombok.Data;
  * @modified xingchi
  */
 @Data
-public class ShortLinkBuilerDTO {
+public class ShortLinkBuilderDTO {
 
     private String longLink;
 
