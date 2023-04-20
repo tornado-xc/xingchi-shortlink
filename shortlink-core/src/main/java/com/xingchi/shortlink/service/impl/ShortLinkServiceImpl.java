@@ -33,6 +33,9 @@ public class ShortLinkServiceImpl implements ShortLinkService {
      */
     private final UniqueCodeClient uniqueCodeClient;
 
+    /**
+     * 短链属性配置
+     */
     private final ShortLinkProperties shortLinkProperties;
 
     @Autowired
@@ -54,10 +57,8 @@ public class ShortLinkServiceImpl implements ShortLinkService {
 
     @Override
     public ShortLink queryShortLink(String shortUrl) {
-
-
-
-        return null;
+        String shortHash = DigestUtils.md5Hex(shortUrl);
+        return this.queryShortLink(shortHash, shortUrl);
     }
 
     @Override
@@ -75,12 +76,7 @@ public class ShortLinkServiceImpl implements ShortLinkService {
 
         // 构建短链
         String domain = shortLinkProperties.getDomain();
-        String shortLink = domain;
-        if (domain.endsWith(Constants.SLASH)) {
-            shortLink += uniqueCode;
-        } else {
-            shortLink = shortLink + Constants.SLASH + uniqueCode;
-        }
+        String shortLink = domain + uniqueCode;
 
         // 计算哈希值
         String longHash = DigestUtils.md5Hex(longLink);

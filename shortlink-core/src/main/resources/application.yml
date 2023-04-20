@@ -3,11 +3,6 @@ server:
 spring:
   application:
     name: ${SPRING.APPLICATION.NAME:shortlink-server}
-  cloud:
-    nacos:
-      discovery:
-        group: DEV_GROUP
-        server-addr: localhost:58848
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://150.158.130.171:53306/xingchi_framework?useSSL=false&serverTimezone=UTC

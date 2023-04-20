@@ -9,4 +9,6 @@ public interface Constants {
 
     String SLASH = "/";
 
+    String REGEX_URL = "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?";
+
 }
